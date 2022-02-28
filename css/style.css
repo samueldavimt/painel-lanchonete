@@ -391,10 +391,15 @@ header img{
     min-height: calc(100vh - 80px);
     margin-top: -132px;
     bottom: 0px;
-    position: relative;
-    right: -1000px;
+    position: relative;   
+    opacity: 1;
+    display: none;
 }
-
+.cart-hide{
+    width: 0px;
+    opacity: 0;
+    padding: 0;
+}
 /* right:-100px */
 
 /* Cart item */
@@ -459,4 +464,5 @@ header img{
     border-radius: 20px;
     font-size: 20px;
     cursor: pointer;
+    min-width: 250px;
 }
