@@ -1,0 +1,232 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lato',Helvetica,Arial;
+    text-decoration: none;
+}
+
+:root{
+    --cor-primary:#0095ff;
+}
+
+
+.models{
+    display: none;
+}
+/* window front */
+.window-front{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../assets/images/lycs-architecture-H77w4l3UWy4-unsplash2.jpg');
+    background-size: cover;
+    background-position: center;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+    z-index: 999;
+    height: 0vh;
+}
+
+@keyframes window-opacity{
+    0%{
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+.window-front .content{
+    position: relative;
+    top: -100px;
+    text-align: center;
+}
+.window-front h1{
+    animation: window-opacity 0.5s ease-out;
+    font-size: 80px;
+    position: relative;
+}
+
+.window-front span{
+    animation: window-opacity 0.5s ease-out;
+    width: 80px;
+    height: 3px;
+    border-radius: 1px;
+    background-color: white;
+    display: block;
+    margin: 0 auto;
+    margin: 20px auto 60px auto;
+}
+
+.window-front button{
+    animation: window-opacity 0.5s ease-out;
+    padding: 20px 30px;
+    font-size: 25px;
+    color: white;
+    background-color: #0095ff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.486);
+    cursor: pointer;
+}
+.window-front button:hover{
+    transition: 0.3s;
+    background-color: gold;
+}
+
+
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: space-around;
+    background-color: #0d172a;
+    height: 80px;
+    align-items: center;
+}
+header a{
+    color: white;
+    font-size: 22px;
+}
+header .cart-header-info{
+    background-color: #0095ff;
+    display: flex;
+    padding: 10px;
+    border-radius: 2px;
+    align-items: center;
+    cursor: pointer;
+}
+header .cart-header-info:hover{
+    background-color: #0b84db;
+    transition: 0.3s;
+}
+header .cart-header-info span{
+    font-size: 20px;
+}
+header img{
+    width: 25px;
+    display: block;
+    margin-right: 20px;
+}
+
+/* Container Cards */
+
+.container-cards{
+    height: 300px;
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-cards .title{
+    text-align: center;
+}
+.container-cards .title span{
+    font-size: 35px;
+    animation: window-opacity 0.5s ease-out;
+    font-weight: bold;
+    display: block;
+}
+
+/* Cards */
+
+.cards{
+    margin-top: 30px;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+/* Card Section */
+
+.card-section,.card-item{
+    animation: window-opacity 0.5s ease-out;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 15px 10px;
+    margin: 0px 20px;
+    
+}
+.card-section:hover{
+    background-color: rgba(128, 128, 128, 0.068);
+    border-radius: 5px;
+   
+}
+
+.card-section .img, .card-item .img{
+    width: 100%;
+    height: 200px;
+    
+    
+}
+.card-section .img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.card-section .card-section-title{
+    font-size: 25px;
+    margin: 10px 0px 20px 0px;
+}
+
+.card-section a{
+    color: white;
+    background-color: var(--cor-primary);
+    padding: 10px 50px;
+    border-radius: 30px;
+}
+.card-section a:hover,.card-item .card-item-add:hover{
+    background-color: #0b84db;
+    transition: 0.3s;
+}
+
+/* Card Item */
+
+.card-item{
+    position: relative;
+}
+.card-item .card-item-price span{
+    margin: 10px 0px;
+    margin-top: -10px;
+    display: block;
+    font-size: 15px;
+    color: rgb(80, 76, 76);
+}
+
+.card-item .img img{
+        margin: 0 auto;
+        display: block;
+        height: 100%;
+}
+.card-item .card-item-name span{
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+.card-item .card-item-add{
+    background-color: var(--cor-primary);
+    padding: 12.5px 20px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    top: -25px;
+}
