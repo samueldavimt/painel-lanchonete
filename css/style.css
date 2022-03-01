@@ -263,7 +263,7 @@ header img{
     width: 900px;
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    column-gap: 20px;
+    column-gap: 40px;
     padding: 30px;
     border-radius: 20px;
     /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.308); */

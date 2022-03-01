@@ -5,6 +5,9 @@ const qs = (e)=>{
 const qsall = (e)=>{
     return document.querySelectorAll(e)
 }
+var itemQt = 1
+let priceItem = null
+let constPrice = null
 
 const insertCards = {
     insertItems(){
@@ -36,6 +39,8 @@ const insertCards = {
             qs('.cards').appendChild(cardItem)
 
 
+
+
         })
   
     },
@@ -57,12 +62,15 @@ const insertCards = {
             qs('.cards').appendChild(cardSection)
         })
 
+        windowItemInfo.modifyQtItem()
+
     }
 
 }
 
 const windowItemInfo = {
     displayWindowInfo(){
+        itemQt = 1
         let windowInfo = qs('.item-window-container')
 
         windowInfo.style.opacity  = 0
@@ -73,14 +81,106 @@ const windowItemInfo = {
 
         windowInfo.style.display = 'flex'
 
-        
-        
         let positionSection = this.dataset.keySection
         let positionItem = this.dataset.keyItem
         let item = products[positionSection].items[positionItem]
 
+        windowInfo.querySelector('.img img').src = item.img
+        windowInfo.querySelector('.item-window-info h1').innerHTML = item.name
 
+        windowInfo.querySelector('.item-window-price').innerHTML = 'R$ ' + item.price.toFixed(2,0)
+
+        priceItem = Number(item.price.toFixed(2,0))
+
+        qs('.cancel-window-area').addEventListener('click',windowItemInfo.hideWindowInfo)
+
+        //Add sizes
+        qs('.item-window-size .sizes').innerHTML = ''
+
+        item.sizes.forEach(sizeInfo=>{
+            let size = qs('.models .size').cloneNode(true)
+
+            size.querySelector('span:nth-of-type(1)').innerHTML = sizeInfo.name
+
+            size.querySelector('span:nth-of-type(2)').innerHTML = sizeInfo.size
+            size.addEventListener('click',windowItemInfo.modifySizeItem)
+            
+            size.dataset.price = sizeInfo.price
+
+
+            qs('.item-window-size .sizes').appendChild(size)
+
+        })
+        qs('.item-window-size div.size:nth-last-child(1)').classList.add('selected')
+
+        windowInfo.querySelector('.window-area-qt').innerHTML = itemQt
+
+
+
+
+
+
+    },
+
+    modifySizeItem(){
+        itemQt = 1
+        constPrice = null
+        qsall('.size').forEach(size=>{
+            size.classList.remove('selected')
+        })
+        this.classList.add('selected')
+        let price = Number(this.dataset.price)
+        console.log(price)
+        qs('.item-window-price').innerHTML = `R$ ${price.toFixed(2,0)}`
+
+        priceItem = Number(price.toFixed(2,0))
+    },
+
+    hideWindowInfo(){
+        itemQt = 1
+        let windowInfo = qs('.item-window-container')
+
+        windowInfo.style.opacity  = 0
+
+        setTimeout(()=>{
+          
+            windowInfo.style.display = 'none'
+        },400)
+
+        
+    },
+
+    modifyQtItem(){
+        qs(".window-price-qtmenos").addEventListener('click',function(){
+            if(itemQt > 1){
+                itemQt --
+                
+            }          
+            qs('.window-area-qt').innerHTML = itemQt
+            
+           if(constPrice > priceItem){
+            constPrice -= priceItem
+           }
+
+            qs('.item-window-price').innerHTML = `R$ ${constPrice.toFixed(2,0)}`
+
+        })
+
+        qs(".window-price-qtmais").addEventListener('click',function(e){
+            e.stopPropagation()
+            console.log(itemQt)
+            
+            itemQt ++
+           
+           qs('.window-area-qt').innerHTML = itemQt
+            constPrice = priceItem * itemQt
+
+            qs('.item-window-price').innerHTML = `R$ ${constPrice.toFixed(2,0)}`
+
+        })
     }
+
+
 
 }
 

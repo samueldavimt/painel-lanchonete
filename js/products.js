@@ -27,8 +27,7 @@ const products = [
                 price:12.00,
                 sizes:[
                     {name:'Pequena', size:'120g',price:12.00},
-                    {name:'Médio', size:'320g',price:15.00},
-                    {name:'Grande', size:'820g',price:22.00}
+                    {name:'Médio', size:'320g',price:15.00}
 
                 ]
     
