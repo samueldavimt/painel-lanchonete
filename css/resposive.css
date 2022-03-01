@@ -1,14 +1,28 @@
 
 /* CART */
 
-@media (max-width:935px){
+
+@media (max-width:1175px){
     .cart{
         width: 40vw;
         
     }
 }
+@media (max-width:1095px){
+    .cart{
+        width: 42vw;
+        
+    }
+}
 
-@media (max-width:750px){
+@media (max-width:865px){
+    .cart{
+        width: 48vw;
+        
+    }
+}
+
+@media (max-width:780px){
     .cart{
         width: 100%;
         position: fixed;

@@ -32,6 +32,7 @@ const cart = {
             pItem: itemPosition,
             name:nameItem,
             price:constPrice,
+            priceDefault: priceItem,
             qt:itemQt,
             size: sizeItem
 
@@ -40,8 +41,7 @@ const cart = {
         let verify = cart.cart.findIndex(item=>{
             return item.key == itemCart.key
         }) 
-        console.log(itemCart.key)
-        console.log('key',verify, 'lenght',cart.cart.length)
+       
 
         if(verify > -1){
             cart.cart[verify].qt += itemCart.qt;
@@ -51,7 +51,7 @@ const cart = {
             cart.cart.push(itemCart)
         }
 
-        console.log(cart.cart)
+        
         cart.updateCart()
 
         windowItemInfo.hideWindowInfo()
@@ -61,6 +61,7 @@ const cart = {
 
 
     updateCart(){
+        console.log('update cart')
         let subtotal = 0
         let total = 0
         qs('.cart-items').innerHTML = ''
@@ -92,6 +93,34 @@ const cart = {
             itemCart.querySelector('.cart-item-name').innerHTML = `${item.name}  ${size}`
             itemCart.querySelector(".cart-qt-value").innerHTML = item.qt
 
+            itemCart.querySelector('.cart-qtmais').addEventListener('click',function(){
+               cart.cart[index].qt ++
+               cart.cart[index].price += cart.cart[index].priceDefault
+                cart.updateCart()
+            })
+
+            itemCart.querySelector('.cart-qtmenos').addEventListener('click',function(){
+                if(cart.cart[index].qt > 1){
+                    cart.cart[index].qt --
+                    cart.cart[index].price -= cart.cart[index].priceDefault
+                }
+               
+                cart.updateCart()
+             })
+
+             itemCart.querySelector('.removeItem').addEventListener('click',function(){
+                 let itemRemove = cart.cart[index]
+                 let positionItem = cart.cart.indexOf(itemRemove)
+                 cart.cart.splice(positionItem,1)
+                 console.log(itemRemove)
+                 cart.updateCart()
+                 if(cart.cart.length < 1){
+                    cart.hideCart()
+                }
+                 
+             })
+
+
             qs('.cart-items').appendChild(itemCart)
 
             qs('.subtotal-price').innerHTML = 'R$ ' + subtotal.toFixed(2,0)
@@ -106,12 +135,13 @@ const cart = {
 
     },
 
+
     showCart(){
         qs('.cart').classList.remove('cart-hide')
     },
 
     hideCart(){
-        qs('.cart').classList.remove('cart-hide')
+        qs('.cart').classList.add('cart-hide')
     },
 
     eventCartButton(){
