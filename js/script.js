@@ -9,6 +9,37 @@ var itemQt = 1
 let priceItem = null
 let constPrice = null
 
+
+const cart = {
+    cart: [],
+
+    addItemCart(){
+        console.log(
+            'itemQt',itemQt,
+            'constPrice',constPrice
+        )
+    },
+
+    showCart(){
+        qs('.cart').classList.remove('cart-hide')
+    },
+
+    hideCart(){
+        qs('.cart').classList.remove('cart-hide')
+    },
+
+    eventCartButton(){
+        qs('.cart-header-info').addEventListener('click',function(){
+            console.log('click')
+            if(qs('.cart').classList.contains('cart-hide')){
+                qs('.cart').classList.remove('cart-hide')
+            }else{
+                qs('.cart').classList.add('cart-hide')
+            }
+        })
+    }
+}
+
 const insertCards = {
     insertItems(){
         qs('.cards').innerHTML = ''
@@ -69,7 +100,9 @@ const insertCards = {
 }
 
 const windowItemInfo = {
+   
     displayWindowInfo(){
+        
         itemQt = 1
         let windowInfo = qs('.item-window-container')
 
@@ -91,8 +124,11 @@ const windowItemInfo = {
         windowInfo.querySelector('.item-window-price').innerHTML = 'R$ ' + item.price.toFixed(2,0)
 
         priceItem = Number(item.price.toFixed(2,0))
+        constPrice = priceItem
 
         qs('.cancel-window-area').addEventListener('click',windowItemInfo.hideWindowInfo)
+
+        qs('.add-cart').addEventListener('click',cart.addItemCart)
 
         //Add sizes
         qs('.item-window-size .sizes').innerHTML = ''
@@ -125,6 +161,7 @@ const windowItemInfo = {
     modifySizeItem(){
         itemQt = 1
         constPrice = null
+        qs('.window-area-qt').innerHTML = itemQt
         qsall('.size').forEach(size=>{
             size.classList.remove('selected')
         })
@@ -134,10 +171,12 @@ const windowItemInfo = {
         qs('.item-window-price').innerHTML = `R$ ${price.toFixed(2,0)}`
 
         priceItem = Number(price.toFixed(2,0))
+        constPrice = priceItem
     },
 
     hideWindowInfo(){
         itemQt = 1
+        
         let windowInfo = qs('.item-window-container')
 
         windowInfo.style.opacity  = 0
@@ -151,6 +190,7 @@ const windowItemInfo = {
     },
 
     modifyQtItem(){
+       
         qs(".window-price-qtmenos").addEventListener('click',function(){
             if(itemQt > 1){
                 itemQt --
@@ -185,3 +225,4 @@ const windowItemInfo = {
 }
 
 insertCards.insertCardSection()
+cart.eventCartButton()

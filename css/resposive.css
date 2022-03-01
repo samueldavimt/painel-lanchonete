@@ -11,8 +11,8 @@
 @media (max-width:750px){
     .cart{
         width: 100%;
-        position: absolute;
-        
+        position: fixed;
+        height: 100%;
     }
 }
 

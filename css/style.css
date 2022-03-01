@@ -387,18 +387,18 @@ header img{
     width: 30vw;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     overflow-x: hidden;
-    transition: 0.4s;
+    transition: 0.3s;
     min-height: calc(100vh - 80px);
     margin-top: -132px;
     bottom: 0px;
-    position: relative;   
-    opacity: 1;
-    display: none;
+    position: relative; 
+    opacity: 1;  
+    
 }
 .cart-hide{
-    width: 0px;
-    opacity: 0;
+    width: 0px !important;
     padding: 0;
+    opacity: 0;
 }
 /* right:-100px */
 
