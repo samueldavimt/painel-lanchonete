@@ -5,19 +5,57 @@ const qs = (e)=>{
 const qsall = (e)=>{
     return document.querySelectorAll(e)
 }
-var itemQt = 1
+let itemQt = 1
 let priceItem = null
 let constPrice = null
 
+let sectionPosition = null
+let itemPosition = null
+let sizeItem = null
 
 const cart = {
     cart: [],
 
     addItemCart(){
-        console.log(
-            'itemQt',itemQt,
-            'constPrice',constPrice
-        )
+        
+        let item = products[sectionPosition].items[itemPosition]
+        let nameItem = item.name
+    
+
+        let itemCart = {
+            pSection: sectionPosition,
+            pItem: itemPosition,
+            name:nameItem,
+            price:constPrice,
+            qt:itemQt,
+            size: sizeItem
+
+        }
+
+        cart.cart.push(itemCart)
+        console.log(cart.cart)
+        cart.updateCart()
+
+        windowItemInfo.hideWindowInfo()
+        
+
+    },
+
+
+    updateCart(){
+        qs('.cart-items').innerHTML = ''
+        cart.showCart()
+        cart.cart.forEach((item,index)=>{
+            let itemCart = qs('.cart-item').cloneNode(true)
+
+            itemCart.querySelector(".cart-item-img img").src = products[item.pSection].items[item.pItem].img
+
+            itemCart.querySelector('.cart-item-name').innerHTML = item.name
+            
+
+            qs('.cart-items').appendChild(itemCart)
+        })
+
     },
 
     showCart(){
@@ -30,7 +68,7 @@ const cart = {
 
     eventCartButton(){
         qs('.cart-header-info').addEventListener('click',function(){
-            console.log('click')
+            
             if(qs('.cart').classList.contains('cart-hide')){
                 qs('.cart').classList.remove('cart-hide')
             }else{
@@ -45,11 +83,11 @@ const insertCards = {
         qs('.cards').innerHTML = ''
 
         let key = this.dataset.key 
-        console.log(key)
+       
         let sectionProducts = products.find(p=>{
             return p.id == key
         })
-        console.log(sectionProducts)
+       
         
         let items = sectionProducts.items
         items.forEach((item,index)=>{
@@ -118,6 +156,11 @@ const windowItemInfo = {
         let positionItem = this.dataset.keyItem
         let item = products[positionSection].items[positionItem]
 
+        itemPosition =  positionItem
+        sectionPosition = positionSection
+        windowInfo.dataset.keySection = positionSection
+        windowInfo.dataset.keyItem = positionItem
+
         windowInfo.querySelector('.img img').src = item.img
         windowInfo.querySelector('.item-window-info h1').innerHTML = item.name
 
@@ -130,6 +173,7 @@ const windowItemInfo = {
 
         qs('.add-cart').addEventListener('click',cart.addItemCart)
 
+
         //Add sizes
         qs('.item-window-size .sizes').innerHTML = ''
 
@@ -137,7 +181,8 @@ const windowItemInfo = {
             let size = qs('.models .size').cloneNode(true)
 
             size.querySelector('span:nth-of-type(1)').innerHTML = sizeInfo.name
-
+            sizeItem = sizeInfo.name
+            size.dataset.name = sizeInfo.name
             size.querySelector('span:nth-of-type(2)').innerHTML = sizeInfo.size
             size.addEventListener('click',windowItemInfo.modifySizeItem)
             
@@ -167,11 +212,14 @@ const windowItemInfo = {
         })
         this.classList.add('selected')
         let price = Number(this.dataset.price)
-        console.log(price)
+        
         qs('.item-window-price').innerHTML = `R$ ${price.toFixed(2,0)}`
 
         priceItem = Number(price.toFixed(2,0))
         constPrice = priceItem
+
+        sizeItem = this.dataset.name
+        
     },
 
     hideWindowInfo(){
@@ -208,7 +256,7 @@ const windowItemInfo = {
 
         qs(".window-price-qtmais").addEventListener('click',function(e){
             e.stopPropagation()
-            console.log(itemQt)
+            
             
             itemQt ++
            
