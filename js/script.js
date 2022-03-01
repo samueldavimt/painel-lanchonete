@@ -12,6 +12,10 @@ let constPrice = null
 let sectionPosition = null
 let itemPosition = null
 let sizeItem = null
+let desconto = 10
+qs('.desconto-name').innerHTML = `Desconto (-${desconto}%)`
+
+
 
 const cart = {
     cart: [],
@@ -23,6 +27,7 @@ const cart = {
     
 
         let itemCart = {
+            key: `${nameItem}@${sizeItem}`,
             pSection: sectionPosition,
             pItem: itemPosition,
             name:nameItem,
@@ -32,7 +37,20 @@ const cart = {
 
         }
 
-        cart.cart.push(itemCart)
+        let verify = cart.cart.findIndex(item=>{
+            return item.key == itemCart.key
+        }) 
+        console.log(itemCart.key)
+        console.log('key',verify, 'lenght',cart.cart.length)
+
+        if(verify > -1){
+            cart.cart[verify].qt += itemCart.qt;
+            cart.cart[verify].price += itemCart.price;
+
+        }else{
+            cart.cart.push(itemCart)
+        }
+
         console.log(cart.cart)
         cart.updateCart()
 
@@ -43,18 +61,48 @@ const cart = {
 
 
     updateCart(){
+        let subtotal = 0
+        let total = 0
         qs('.cart-items').innerHTML = ''
         cart.showCart()
         cart.cart.forEach((item,index)=>{
             let itemCart = qs('.cart-item').cloneNode(true)
-
+            subtotal += item.price
             itemCart.querySelector(".cart-item-img img").src = products[item.pSection].items[item.pItem].img
 
-            itemCart.querySelector('.cart-item-name').innerHTML = item.name
-            
+            let size = ''
+            switch(item.size){
+                case 'Pequena':
+                case 'Pequeno':
+                    size = '(P)'
+                    break;
+                
+                case 'Médio':
+                case 'Medio':
+                    size = '(M)'
+                    break;
+                
+                case 'Grande':
+                    size= '(G)'
+                    break;
+                default:
+                    size = ''
+                    break
+            }
+            itemCart.querySelector('.cart-item-name').innerHTML = `${item.name}  ${size}`
+            itemCart.querySelector(".cart-qt-value").innerHTML = item.qt
 
             qs('.cart-items').appendChild(itemCart)
+
+            qs('.subtotal-price').innerHTML = 'R$ ' + subtotal.toFixed(2,0)
+           
+ 
+
         })
+
+        //20 - (20*50/100)
+        total = subtotal - (subtotal*desconto/100)
+        qs('.total-price').innerHTML = `R$ ${total.toFixed(2,0)}`
 
     },
 

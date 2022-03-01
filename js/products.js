@@ -10,11 +10,11 @@ const products = [
                 id:1, 
                 name:'Burger Caseiro',
                 img:'/assets/images/burger/burger1.jpg',
-                price:22.00,
+                price:23.00,
                 sizes:[
                     {name:'Pequena', size:'120g',price:10.00},
                     {name:'Médio', size:'320g',price:15.00},
-                    {name:'Grande', size:'820g',price:22.00}
+                    {name:'Grande', size:'820g',price:23.00}
 
                 ]
     
