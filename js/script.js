@@ -124,6 +124,8 @@ const cart = {
             qs('.cart-items').appendChild(itemCart)
 
             qs('.subtotal-price').innerHTML = 'R$ ' + subtotal.toFixed(2,0)
+
+            
            
  
 
@@ -132,6 +134,12 @@ const cart = {
         //20 - (20*50/100)
         total = subtotal - (subtotal*desconto/100)
         qs('.total-price').innerHTML = `R$ ${total.toFixed(2,0)}`
+
+        qs('.cart-header-qt span').innerHTML = cart.cart.length
+
+        qs('.subtotal-price').innerHTML = 'R$ ' + subtotal.toFixed(2,0)
+
+
 
     },
 
@@ -360,3 +368,5 @@ insertCards.insertCardSection()
 cart.eventCartButton()
 
 qs('.back-sections').addEventListener('click',insertCards.insertCardSection)
+
+qs('.cart-close-mobile').addEventListener('click',cart.hideCart)

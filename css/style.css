@@ -469,6 +469,15 @@ header img{
     margin-left: 30px ;
     cursor: pointer;
 }
+
+.cart .cart-close-mobile{
+    margin-bottom: 20px;
+    width: 100px;
+    padding: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    display: none;
+}
 .buy-finalyze{
     background-color: var(--cor-primary);
     color: white;

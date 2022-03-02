@@ -28,12 +28,17 @@
         position: fixed;
         height: 100%;
     }
+
+    .cart-close-mobile{
+        display: block !important;
+    }
 }
 
 
 @media (max-width:830px){
     .item-window-area{
         grid-template-columns: 1fr;
+        grid-template-rows: 1fr 2fr;
         border-radius: 0px;
         width: 100%;
         height: 100%;
