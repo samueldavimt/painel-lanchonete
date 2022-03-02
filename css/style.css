@@ -153,6 +153,17 @@ header img{
     justify-content: space-between;
     
 }
+
+.back-sections{
+    font-size: 22px;
+    font-weight: bold;
+    padding: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.2s;
+}
 /* Cards */
 
 .cards{
@@ -389,7 +400,7 @@ header img{
     overflow-x: hidden;
     transition: 0.3s;
     min-height: calc(100vh - 80px);
-    margin-top: -132px;
+    margin-top: -180px;
     bottom: 0px;
     position: relative; 
     opacity: 1;  

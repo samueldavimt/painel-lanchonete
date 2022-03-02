@@ -158,6 +158,8 @@ const cart = {
 
 const insertCards = {
     insertItems(){
+        qs('.back-sections').style.opacity = '1'
+        qs('.title span').innerHTML = 'Items'
         qs('.cards').innerHTML = ''
 
         let key = this.dataset.key 
@@ -193,6 +195,16 @@ const insertCards = {
     },
 
     insertCardSection(){
+        itemQt = 1
+        priceItem = null
+        constPrice = null
+
+        sectionPosition = null
+        itemPosition = null
+        sizeItem = null
+
+        qs('.back-sections').style.opacity = '0'
+        qs('.title span').innerHTML = 'Sessões'
         qs('.cards').innerHTML = ''
 
         products.forEach((section, index)=>{
@@ -209,7 +221,9 @@ const insertCards = {
             qs('.cards').appendChild(cardSection)
         })
 
-        windowItemInfo.modifyQtItem()
+        qs(".window-price-qtmenos").addEventListener('click',windowItemInfo.windowQtMenos)
+
+        qs(".window-price-qtmais").addEventListener('click',windowItemInfo.windowQtMais)
 
     }
 
@@ -315,35 +329,27 @@ const windowItemInfo = {
         
     },
 
-    modifyQtItem(){
-       
-        qs(".window-price-qtmenos").addEventListener('click',function(){
-            if(itemQt > 1){
-                itemQt --
-                
-            }          
-            qs('.window-area-qt').innerHTML = itemQt
+    windowQtMenos(){
+        if(itemQt > 1){
+            itemQt --
             
-           if(constPrice > priceItem){
-            constPrice -= priceItem
-           }
+        }          
+        qs('.window-area-qt').innerHTML = itemQt
+        
+       if(constPrice > priceItem){
+        constPrice -= priceItem
+       }
 
-            qs('.item-window-price').innerHTML = `R$ ${constPrice.toFixed(2,0)}`
+        qs('.item-window-price').innerHTML = `R$ ${constPrice.toFixed(2,0)}`
+    },
 
-        })
-
-        qs(".window-price-qtmais").addEventListener('click',function(e){
-            e.stopPropagation()
-            
-            
-            itemQt ++
+    windowQtMais(){
+        itemQt ++
            
            qs('.window-area-qt').innerHTML = itemQt
             constPrice = priceItem * itemQt
 
             qs('.item-window-price').innerHTML = `R$ ${constPrice.toFixed(2,0)}`
-
-        })
     }
 
 
@@ -352,3 +358,5 @@ const windowItemInfo = {
 
 insertCards.insertCardSection()
 cart.eventCartButton()
+
+qs('.back-sections').addEventListener('click',insertCards.insertCardSection)
