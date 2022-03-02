@@ -30,7 +30,7 @@
     align-items: center;
     overflow-y: hidden;
     z-index: 999;
-   height: 0px;
+   
 }
 
 @keyframes window-opacity{
@@ -164,12 +164,17 @@ header img{
     transition: 0.2s;
     margin-top: 20px;
     display: none;
+  
+   text-align: center;
+    position: absolute;
+    width: 100% ;
 }
 /* Cards */
 
 .cards{
     margin-top: 0px;
     padding: 30px;
+    margin-top: 60px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -225,6 +230,8 @@ header img{
 .card-item{
     position: relative;
 }
+
+
 .card-item .card-item-price span{
     margin: 10px 0px;
     margin-top: -10px;
@@ -405,9 +412,12 @@ header img{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     overflow-x: hidden;
     transition: 0.3s;
-    min-height: calc(100vh - 80px);
-    margin-top: -180px;
+    /* min-height: calc(100vh - 140px); */
+    /* margin-top: -80px; */
+    
     bottom: 0px;
+    min-height:calc(100vh - 75px);
+    margin-top: -75px;
     position: relative; 
     opacity: 1;  
     

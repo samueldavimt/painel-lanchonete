@@ -364,7 +364,7 @@ const windowItemInfo = {
 
 }
 
-insertCards.insertCardSection()
+// insertCards.insertCardSection()
 cart.eventCartButton()
 
 qs('.back-sections').addEventListener('click',insertCards.insertCardSection)
