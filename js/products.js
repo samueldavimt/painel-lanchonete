@@ -21,7 +21,7 @@ const products = [
 
             {
                 id:2, 
-                name:'Hamburguer Natural',
+                name:'Hamburguer de Frango',
                 img:'/assets/images/burger/burger2.jpg',
                 price:15.00,
                 sizes:[
@@ -34,7 +34,7 @@ const products = [
 
             {
                 id:3, 
-                name:'Hamburguer Milaneza',
+                name:'Hamburguer Misto',
                 img:'/assets/images/burger/burger3.jpg',
                 price:22.00,
                 sizes:[
