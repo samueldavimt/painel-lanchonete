@@ -1,14 +1,13 @@
-
 const products = [
 
     {
         id:1,
-        nameSection: 'hamburguer',
+        nameSection: 'Hamburguer',
         img:'/assets/images/burger/burger2.jpg',
         items: [
             {
                 id:1, 
-                name:'Burger Caseiro',
+                name:'Hamburguer Caseiro',
                 img:'/assets/images/burger/burger1.jpg',
                 price:23.00,
                 sizes:[
@@ -22,7 +21,7 @@ const products = [
 
             {
                 id:2, 
-                name:'Burger Natural',
+                name:'Hamburguer Natural',
                 img:'/assets/images/burger/burger2.jpg',
                 price:15.00,
                 sizes:[
@@ -35,7 +34,7 @@ const products = [
 
             {
                 id:3, 
-                name:'Burger Milaneza',
+                name:'Hamburguer Milaneza',
                 img:'/assets/images/burger/burger3.jpg',
                 price:22.00,
                 sizes:[

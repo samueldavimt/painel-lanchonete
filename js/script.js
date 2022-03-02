@@ -16,7 +16,6 @@ let desconto = 10
 qs('.desconto-name').innerHTML = `Desconto (-${desconto}%)`
 
 
-
 const cart = {
     cart: [],
 
@@ -50,15 +49,12 @@ const cart = {
         }else{
             cart.cart.push(itemCart)
         }
-
-        
+     
         cart.updateCart()
 
         windowItemInfo.hideWindowInfo()
         
-
     },
-
 
     updateCart(){
         console.log('update cart')
@@ -120,14 +116,9 @@ const cart = {
                  
              })
 
-
             qs('.cart-items').appendChild(itemCart)
 
             qs('.subtotal-price').innerHTML = 'R$ ' + subtotal.toFixed(2,0)
-
-            
-           
- 
 
         })
 
@@ -138,8 +129,6 @@ const cart = {
         qs('.cart-header-qt span').innerHTML = cart.cart.length
 
         qs('.subtotal-price').innerHTML = 'R$ ' + subtotal.toFixed(2,0)
-
-
 
     },
 
@@ -194,9 +183,6 @@ const insertCards = {
             cardItem.addEventListener('click',windowItemInfo.displayWindowInfo)
 
             qs('.cards').appendChild(cardItem)
-
-
-
 
         })
   
@@ -273,7 +259,6 @@ const windowItemInfo = {
 
         qs('.add-cart').addEventListener('click',cart.addItemCart)
 
-
         //Add sizes
         qs('.item-window-size .sizes').innerHTML = ''
 
@@ -288,18 +273,12 @@ const windowItemInfo = {
             
             size.dataset.price = sizeInfo.price
 
-
             qs('.item-window-size .sizes').appendChild(size)
 
         })
         qs('.item-window-size div.size:nth-last-child(1)').classList.add('selected')
 
         windowInfo.querySelector('.window-area-qt').innerHTML = itemQt
-
-
-
-
-
 
     },
 
@@ -333,8 +312,7 @@ const windowItemInfo = {
           
             windowInfo.style.display = 'none'
         },400)
-
-        
+    
     },
 
     windowQtMenos(){
@@ -359,12 +337,9 @@ const windowItemInfo = {
 
             qs('.item-window-price').innerHTML = `R$ ${constPrice.toFixed(2,0)}`
     }
-
-
-
 }
 
-// insertCards.insertCardSection()
+insertCards.insertCardSection()
 cart.eventCartButton()
 
 qs('.back-sections').addEventListener('click',insertCards.insertCardSection)
