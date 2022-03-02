@@ -149,7 +149,7 @@ header img{
 
 .container-card-cart{
     display: flex;
-    margin-top: 60px;
+    margin-top: 0px;
     justify-content: space-between;
     
 }
@@ -161,13 +161,14 @@ header img{
     max-width: 1200px;
     margin: 0 auto;
     cursor: pointer;
-    opacity: 0;
     transition: 0.2s;
+    margin-top: 20px;
+    display: none;
 }
 /* Cards */
 
 .cards{
-    margin-top: 30px;
+    margin-top: 0px;
     padding: 30px;
     display: flex;
     flex-wrap: wrap;
@@ -186,7 +187,7 @@ header img{
     align-items: center;
     cursor: pointer;
     padding: 15px 10px;
-    margin: 0px 20px;  
+    margin: 10px 20px;  
 }
 .card-section:hover{
     background-color: rgba(128, 128, 128, 0.068);
@@ -271,14 +272,15 @@ header img{
 
 .item-window-area{
     background-color: white;
-    width: 900px;
+    width: 950px;
     display: grid;
     grid-template-columns: repeat(2,1fr);
     column-gap: 40px;
     padding: 30px;
     border-radius: 20px;
     /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.308); */
-    box-shadow:0px 0px 15px #999
+    box-shadow:0px 0px 15px #999;
+   
 }
 
 .item-window-area img{
@@ -292,9 +294,13 @@ header img{
     margin-top: 20px;
     font-size: 16px;
 }
+.item-window-info h1{
+    margin-bottom: 40px;
+}
 .item-window-size .sizes{
     display: flex;
     margin: 10px 0px;
+    flex-wrap: wrap;
 }
 
 .item-window-size .sizes .size{

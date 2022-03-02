@@ -166,7 +166,7 @@ const cart = {
 
 const insertCards = {
     insertItems(){
-        qs('.back-sections').style.opacity = '1'
+        qs('.back-sections').style.display = 'block'
         qs('.title span').innerHTML = 'Items'
         qs('.cards').innerHTML = ''
 
@@ -211,7 +211,7 @@ const insertCards = {
         itemPosition = null
         sizeItem = null
 
-        qs('.back-sections').style.opacity = '0'
+        qs('.back-sections').style.display = 'none'
         qs('.title span').innerHTML = 'Sessões'
         qs('.cards').innerHTML = ''
 
